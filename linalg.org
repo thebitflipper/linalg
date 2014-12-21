@@ -1,0 +1,922 @@
+* Tentaplugg
+** Avsnitt 1.1-1.2
+   Introduktion, basics
+** Avsnitt 1.3
+*** Koncept
+    + Dumm notation
+      3x5 betyder: en matris med 3 rader och 5 kolumner.
+    + Addition och subtraktion funkar som man kan tänka sig och går
+      att göra baklänges. Fungerar bara om matriserna är lika stora.
+    + Multiplikation (A*B) fungerar genom att ta raden från A och
+      multiplicera motsvarande kollumn från B. Exempel:
+      | 1 | 2 | 4 |
+      | 2 | 6 | 0 |
+      Multipliceras med
+      | 4 |  1 | 4 | 3 |
+      | 0 | -1 | 3 | 1 |
+      | 2 |  7 | 5 | 2 |
+      Första elementet i resultatmatrisen är:
+      (1*4)+(2*0)+(4*2) = 12
+      Som vi kan lägga in såhär:
+      | 12 |   |   |   |
+      |    |   |   |   |
+      Vi kan redan nu dra slutsatsen att resultatetmatrisen av
+      matrismultiplikation har höjden från A och bredden
+      av B.
+      Resultatet är:
+      | 12 | 27 | 30 | 13 |
+      |  8 | -4 | 26 | 12 |
+    + Linjära kombinationer
+      Linjära kombinationer är sätt att skriva matrisoperationer på
+      ett annat sätt. Detta är speciellt intressant i
+      matrismultiplikation. Om vi har en vektor i höjd till exempel.
+      |  2 |
+      | -1 |
+      |  3 |
+      och vi vill multiplicera den med med en matris som har samma
+      höjd som vektorn så kan vi utrycka den som en serie vektorer
+      multiplecerade med vektorns element i ordning.
+    + Augmenterad matris har en linje som går igenom den sista och
+      näst sista linjen och indikerar att det till vänster om linjen
+      är resultatet av ekvationerna. Man kan lika gärna skriva det
+      som en matris = vektor som är lika lång som matrisen.
+    + Transposera en matris
+      Om man vill transposera en matris så drar man en linje
+      från den första skalarn(a_{1,1}) och drar till den sista(a_{m,n})
+      sedan byter man plats på alla element runt dem. Till exempel
+      A = 
+      |  1 | -2 | 4 |
+      |  3 |  7 | 0 |
+      | -5 |  8 | 6 |
+      A^T =
+      |  1 | 3 | -5 |
+      | -2 | 7 |  8 |
+      |  4 | 0 |  6 | 
+      Den här metoden funkar bara för kvadratiska matriser. Annars
+      får man ta första raden, sätta den på höjden som den första
+      kolumnen, ta den andra raden, sätta den på höjden som den
+      andra kollumnen osv.
+    + Trace
+      Trace är summan av alla tal längst med diagonalen av en
+      kvadratisk matris. Exempel:
+      A =
+      | -1 |  2 |  7 |  0 |
+      |  3 |  5 | -8 |  4 |
+      |  1 |  2 |  7 | -3 |
+      |  4 | -2 |  1 |  0 |
+      Ger oss tr(A)
+      -1 + 5 + 7 + 0 = 11
+*** Övningar
+    + 3
+      + g)
+	I det här fallet kan man nog multiplicera in 2:an
+	Vi får då 2D+10E
+	2D:
+	| -4 |   2 | 16 |
+	|  6 |   0 |  4 |
+	|  8 | -12 |  6 |
+	10E
+	|   0 | 30 |  0 |
+	| -50 | 10 | 10 |
+	|  70 | 60 | 20 | 
+	Adderar båda
+	|  -4 | 32 | 16 |
+	| -44 | 10 | 14 |
+	|  78 | 48 | 26 |
+      + l)
+	8
+    + 5
+      + f
+	Intressant fall, Här gångrar vi en matris med den
+	transponerade verisionen av sig själv:
+	CC^T
+	I detta fall fungerar multiplikationen
+	C =
+	|  4 | 9 |
+	| -3 | 0 |
+	|  2 | 1 |
+	
+	C^T = 
+	| 4 | -3 | 2 |
+	| 9 |  0 | 1 |
+	
+	CC^T
+	| 16+81 | -12+0 | 8+9 |
+	| -12+0 |   9+0 | -6+0 |
+	|   8+9 |  -6+0 | 4+1 |
+	
+	|  97 | -12 | 17 |
+	| -12 |   9 | -6 |
+	|  17 |  -6 |  5 |
+      + i
+	tr(DD^T)
+	Vi vet att vi bara behöver räkna ut diagonalen som är (såg
+	detta mönster tidigare i förra talet)
+	| 4+9+16 |        |        |
+	|        | 1+0+36 |        |
+	|        |        | 16+4+9 | 
+	Dvs. alla tal räknade från vänster till höger upphöjda i 2
+	| 29 |    |    |
+	|    | 37 |    |
+	|    |    | 77 |
+	tr är alltså 143
+    + 11
+      + a
+	5x + 1y + 1z = 2
+	2x + 0y + 3z = 2
+	1x + 2y + 0z = 0
+	Gör om det till en matrisekvation av typen Ax=b där A är
+	en matris och x och b är vektorer. Vi vet att
+	matrismultiplikation går från första raden till första
+	kolumnen, så vi skapar helt enkelt en matris som motsvarar
+	det med en vektor som innehåller x y z.
+	A =
+	| 5 | 1 | 1 |
+	| 2 | 0 | 3 |
+	| 1 | 2 | 0 |
+	x =
+	| x |
+	| y |
+	| x | 
+	b = 
+	| 2 |
+	| 1 |
+	| 0 |
+	Ax=b
+    + 17
+      Lös för a b c och d
+      Matriserna:
+      | 3 | a   |
+      | 1 | a+b |
+      =
+      | b    | c-2d |
+      | c+2d | 0    |
+      Vi kan redan se att b = 3
+      På samma sätt kan vi skapa ekvationer för resten.
+      3 = b
+      a = c-2d
+      1 = c+2d
+      a+b = 0
+      a+b = 0 ger oss a = -3
+      
+      Vi får nu:
+      -3 = c-2d
+      1 = c+2d
+      Vilket ger oss:
+      c=-3+2d
+      och
+      d = (1-c)/2
+      
+      Vi stoppar in c i d
+      d = (1 -(-3+2d))/2
+      d = (1 + 3 - 2d) /2
+      d = (4 - 2d)/2
+      d = 2 - 1d
+      2d = 2
+      d = 1
+      
+      Sätter in det nya värdet av d i ekvationen för c
+      c = -3+2d
+      c = -3+2
+      c = -1
+      Alltså: a = -3 b = 3 c = -1 d=1
+	
+** Avsnitt 1.4
+*** Koncept
+    + Algebraiska principer av matriser
+      Matriser kan man multiplicera in. Addition fungerar som
+      vanligt
+    + Nollmatrisen
+      En matris som vars alla scalare är 0. Beter sig som man tror,
+      dvs. om s = 0 så kommer sA ge noll.
+    + Kancelleringslagen
+      Den här lagen säger att om två matriser A och B multipliceras
+      med C och AB och AC ger samma resultat så kan man dra
+      slutsatsen att B = C. *DETTA STÄMMER INTE FÖR MATRISER*
+    + Identitetsmatrisen
+      Är en matris där alla skalare längst diagonalen är 1 och
+      resten noll. Denna matris måste vara
+      kvadratisk. Identitesmatrisen får namnet I_n där n är
+      storleken. Det finurliga med I-matrisen är att IA = A. Den
+      går som vi tidigare sett att få fram via row reduction.
+    + Determinant
+      Determinanten är användbar om man vill veta om en matris är
+      inverterbar eller inte. är summan av alla tal från övre vänstra
+      hörnet till nedre högra minus summan av alla tal längs med
+      diagonalen från övre högra hörnet till det nedre vänstra
+      hörnet. Om determinanten inte är noll så är matrisen
+      inverterbar.
+    + Inverterade matriser
+      Precis som vanliga tal har ett tal som det multipliceras med
+      så att det blir 1. Dvs 7 har 1/7. På samma sätt har en del
+      matriser en matris som den kan multipliceras med så att
+      matrisen blir I. Som vi har sett innan så måste definitionen
+      se ut så här:
+      AB = BA = I
+      Då är A och B inverser av varandra. Om en matris är
+      inverterbar så finns det exakt en invers.
+      Man kan kolla om en matris är inverterbar genom att beräkna
+      determinanten och se om den är nollskilld, är den det så är
+      matrisen inverterbar. 
+      Om man vill invertera en 2x2 matris så tar man determinanten
+      som en skalar i form av 1/*determinanten* och multiplicerar
+      den med alla element i matrisen fast roterade.
+      A =
+      | a | b |
+      | c | d |
+      det*A^-1 =
+      | d/det | -b/det |
+      | -c/det | a/det |
+      Om man vill lösa det mer generella fallet som bygger på att
+      A*A^-1=I, så vi ställer upp det i en ekvation:
+      A =
+      |  1 | -1 |   | 1 | 0 |  \to |
+      | -2 |  3 |   | 0 | 1 | +2 |
+      
+      | 1 | -1 |   | 1 | 0 | 1 |
+      | 0 |  1 |   | 2 | 1 | \to |
+      
+      | 1 | 0 |   | 3 | 1 | 1 |
+      | 0 | 1 |   | 2 | 1 | \to |
+      
+      Som vi ser blir detta samma sak som om vi skulle ta genvägen
+      som vi visade innan.
+
+    + Potenser och matriser
+      Om man vill ha A^-5 så är det samma sak som (A^-1)^5
+    + Oinverterbara matriser
+      Generellt så är matriser med en rad eller kolumn singulära
+      dvs. de har ingen invers. En matris vars determinant är 0 går
+      inte att invertera.
+    + Kommunitiva lagarna 
+      I vanliga fall kan vi skriva (a+b)^2 = a^2+2ab+b^2, detta
+      fungerar inte när man pratar om matriser. Vi får istället
+      skriva: (A+B)^2 = A^2+AB+BA+B^2, detta beror ju förstås på att
+      matrismultiplikation inte är kommutativ (dvs. AB är inte
+      alltid samma sak som BA).
+    + EN DJÄLVA SAK SOM DOM GLÖMDE SÄGA
+      När man tar en matris av storlek A_{3,3} minus 1 så menar man
+      uppenbarligen en matris format såhär:
+      A_{3,3}
+      -
+      | -1 |    |    |
+      |    | -1 |    |
+      |    |    | -1 |
+      DET KÄNNS SOM ATT DET BORDE STÅ TYDLIGT NÅGONSTANS.
+*** Övningar
+    + 5
+      Invertera matrisen B =
+      |  6 |  3 |
+      | -5 | -2 |
+      Vi beräknar determinanten:
+      6*-2 - 3*-5 
+      -12 - -15
+      3
+      Determinanten är 3. Vi multilipcerar B med 1/3
+      |    2 |    1 |
+      | -5/3 | -2/3 |
+    + 8
+      Inversen av en matris med sinus/cosinus-funktioner A =
+      | cos(x)  | sin(x) |
+      | -sin(x) | cos(x) | 
+      Determinanten är cos(x)^2 - sin(x)*-sin(x)
+      Uppenbarligen så är det här 1. Jag har ingen aning om
+      varför. Borde repitera.
+    + 19
+      a) Matrisen A =
+	 |  1 | -1 |
+	 | -2 |  3 |
+	 A^3 =
+	 A^2*A
+	 A^2 =
+	 | 1*1 + (-1*-2) | 1*-1 + -1*3 |
+	 | -2*1 + 3*-2   | -2*-1 + 3*3 |
+	 =
+	 |  3 | -4 |
+	 | -8 | 11 |
+	 A^2*A = 
+	 Viktigt att komma ihåg här är att hålla ordningen rätt
+	 | 3*1 + -4*-2  | 3*(-1)+(-4*3)  |
+	 | -8*1 + 11*-2 | -8*-1 + 11*3   |
+	 =
+	 |  11 | -15 |
+	 | -30 |  41 |
+      b) Vi kan använda den tidigare matrisen, och invertera
+	 den. Determinanten är 11*41 - -30*-15 = 1. Vi får då:
+	 | 41 | 15 |
+	 | 30 | 11 |
+      c) 
+	 A^2-2A+I
+	 A^2
+	 |  3 | -4 |
+	 | -8 | 11 |
+	 2A =
+	 |  2 | -2 |
+	 | -4 |  6 |
+	 I =
+	 | 1 | 0 |
+	 | 0 | 1 |
+	 A^2-2A+I =
+	 |   3-2+1 | -4--2+0 |
+	 | -8--4+0 |  11-6+1 |
+	 =
+	 |  2 | -2 |
+	 | -4 |  6 |
+	 WEEEE
+      d) 
+	 p(A) där p(x) = x-2
+	 Betyder att vi har:
+	 | -1 | -1 |
+	 | -2 |  1 |
+	 OKAY DET FÅR STÅ
+      e) p(A) där p(x) = 2x^2-x+1
+	 ger oss:
+	 2A^2-A+1
+	 A^2-A+1
+	 A^2 =
+	 |  1 | -1 |
+	 | -2 |  3 |
+	 * 
+	 |  1 | -1 |
+	 | -2 |  3 |
+	 =
+	 | 1*1+(-1*-2) | 1*-1+(-1*3) |
+	 | -2*1+(3*-2) | (-2*-1)+3*3 |
+	 =
+	 |  3 | -4 |
+	 | -8 | 11 |
+	 Multiplicerar med 2
+	 |   6 | -8 |
+	 | -16 | 22 |
+	 Sen tar vi -A
+	 |   5 | -7 |
+	 | -14 | 19 |
+	 TROR ATT DET BLEV RÄTT
+	 Tar +1
+	 |   6 | -7 |
+	 | -14 | 20 |
+    + 25
+      A =
+      | a | b |
+      | c | d |
+      Visa att p(A) = 0 när p(x) = x^2 - (a+d)x + (ad-bc)
+      Detta kan lösas:
+      | a | b |
+      | c | d |
+      A^2
+      | aa + bc | ab + bd |
+      | ac+ cd  | bc + dd |
+      
+      Och (a+d)A = 
+      | aa+ad  | ba+bd  |
+      | ca+cd  | da+dd  | 
+      Och A^2 - (a+d)A
+      | (aa+bc)-(aa+ad) | (ab+bd)-(ba+bd) |
+      | (ac+cd)-(ca+cd) | (bc+dd)-(da+dd) |
+      =
+      | bc-ad |     0 |
+      |     0 | bc-da |
+      Tar ^ och adderar med + (ad-bc)
+      | bc-ad + (ad-bc) |               0 |
+      |               0 | bc-da + (ad-bc) | 
+      =
+      | 0 | 0 |
+      | 0 | 0 |
+      WOOOOO vsb
+    + 27
+      Visa att en matris där det går godtyckliga nollskilda tal \in
+      R längst med diagonalen från övre vänster till nedre
+      höger. Om en matris ska vara inverterbar, så måste
+      determinanten vara nollskild. Så får du ekvationen för
+      den ena "halvan" av determinanten genom
+      a_{1,1}*a_{2,2}*a_{3,3}..a_{n,m} - a_{(någon n), (något m)} Men grejen är
+      att a kommer
+      
+      
+      
+      
+	
+** Avsnitt 1.5
+*** Koncept
+    + Elementärmatris
+      En elementärmatris är en matris som kan fås fram från en
+      kvadratisk identitetsmatris genom en operation, till
+      exempel:
+      A =
+      | 1 |  0 |
+      | 0 | -3 |
+      Man kan få A = I genom en av de tre
+      radoperationerna. dvs. Den sista raden /-3. Påminner om de
+      tre operationrna:
+      1. Multiplicera en rad med ett nollskilt tal
+      2. Byt plats på två rader
+      3. Multiplicera en rad med en konstant och addera den till
+	 en annan rad
+    + Intresant Teorem: Eqvivalensteoremet (Det stavas så nu)
+      Om A är en kvadratisk matris så stämmer detta för ALLA ELLER
+      INGET av påståendena:
+      a) A är inverterbar
+      b) Ax = 0 har bara den triviala lösningen (dvs. alla
+	 variabler = 0)
+      c) Den reducerade row echelon formen är: I_n
+	 (dvs. identitetsmatrisen) 
+      d) A är en produkt av elementära matriser(*VIKTIGT*)
+      Så vad vi säger här *EGENTLIGEN* är att om determinanten är
+      nollskild så kan vi dra slutsatsen att matrisen går att
+      invertera så kan vi: bara hitta den triviala lösningen på en
+      matris som är = 0, reducera till I,  göra om till en produkt av
+      elementärmatriser.
+    + Du kan invertera en matris genom att sätta den = I och
+      reducera den med vanliga matrisoperationer, får du en rad
+      nollor på vänstra sidan så går matrisen inte att invertera.
+    + Radekvivalens
+      Två matriser A och B sägs vara radekvivalenta om den ena kan
+      fås fram från den andra via radoperationer. Eftersom vi
+      tidigare har sagt att varje inverterbar matris går att
+      reducera via radoperationer till I, så är två matriser av
+      samma storlek radekvivalenta.
+*** Övningar
+    + 1
+      a) E
+      b) Nej
+      c) Nej
+      d) Nej
+    + 5
+      a) 
+	 Om vi multiplicerar E med A så får vi en matris där A:s
+	 två rader har bytt plats. IT'S LIKE MAGIC.
+      b) Samma sak här, skulle vi multiplicera E med A så skulle
+	 vi få matrisen där andra raden multiplicerats med 3 och
+	 adderats till sista raden.
+    + 7 Hitta matrisen E
+      a) EA = B
+	 Uppenbarligen så är detta A:s matris första rad
+	 multiplicerad -2 och adderad till sista raden. Vi kan
+	 uttrycka detta i matrisen E=
+	 |  1 | 0 | 0 |
+	 |  0 | 1 | 0 |
+	 | -2 | 0 | 1 |
+	 Prövat och verifierat i calc.
+    + 15 Hitta inversen
+      | -1 | 3 | -4 |
+      |  2 | 4 |  1 |
+      | -4 | 2 | -9 |
+      Okay, så den almänna verisionenen verkar vara: sätt matrisen
+      lika med I och radreducera den.
+      | -1 | 3 | -4 |   | 1 | 0 | 0 |   | \-1 |
+      |  2 | 4 |  1 |   | 0 | 1 | 0 |   |     |
+      | -4 | 2 | -9 |   | 0 | 0 | 1 |   |     |
+      
+      |  1 | -3 |  4 |   | -1 | 0 | 0 |   |  \to |
+      |  2 |  4 |  1 |   |  0 | 1 | 0 |   | -2 |
+      | -4 |  2 | -9 |   |  0 | 0 | 1 |   |  4 |
+      
+      | 1 |  -3 |  4 |   |  1 | 0 | 0 |   |   |
+      | 0 |  10 | -7 |   | -2 | 1 | 0 |   | \to |
+      | 0 | -10 |  7 |   |  4 | 0 | 1 |   | 1 |
+      
+      | 1 | -3 |  4 |   |  1 | 0 | 0 |   |   |
+      | 0 | 10 | -7 |   | -2 | 1 | 0 |   | \to |
+      | 0 |  0 |  0 |   |  4 | 0 | 1 |   | 1 |
+      Går inte att invertera!!!!
+    + 17 Hitta inversen
+      | 1 | 0 | 1 |
+      | 0 | 1 | 1 |
+      | 1 | 1 | 0 |
+      Sätter lika med I_3
+      | 1 | 0 | 1 |   | 1 | 0 | 0 |   |  \to |
+      | 0 | 1 | 1 |   | 0 | 1 | 0 |   |    |
+      | 1 | 1 | 0 |   | 0 | 0 | 1 |   | -1 |
+      
+      | 1 | 0 |  1 |   |  1 | 0 | 0 |   |  \to |
+      | 0 | 1 |  1 |   |  0 | 1 | 0 |   |    |
+      | 0 | 1 | -1 |   | -1 | 0 | 1 |   | -1 |
+      
+      | 1 | 0 |  1 |   |  1 | 0 | 0 |   |    |
+      | 0 | 1 |  1 |   |  0 | 1 | 0 |   |  \to |
+      | 0 | 1 | -1 |   | -1 | 0 | 1 |   | -1 |
+      
+      | 1 | 0 |  1 |   |  1 |  0 | 0 |   |   |
+      | 0 | 1 |  1 |   |  0 |  1 | 0 |   |   |
+      | 0 | 0 | -2 |   | -1 | -1 | 1 |   | /-2 |
+
+      | 1 | 0 | 1 |   |   1 |   0 |    0 |   | -1 |
+      | 0 | 1 | 1 |   |   0 |   1 |    0 |   | -1 |
+      | 0 | 0 | 1 |   | 1/2 | 1/2 | 1/-2 |   |  \to |
+
+      | 1 | 0 | 0 |   | 1/2  | -1/2 | 1/2  |   |   |
+      | 0 | 1 | 0 |   | -1/2 | 1/2  | 1/2  |   |   |
+      | 0 | 0 | 1 |   | 1/2  | 1/2  | 1/-2 |   |   |
+
+    + 19 Invertera
+      | 1 | 4 | 4 |
+      | 1 | 2 | 4 |
+      | 1 | 3 | 2 |
+      Sätter = I_3
+      | 1 | 4 | 4 |   | 1 | 0 | 0 |   |  \to |
+      | 1 | 2 | 4 |   | 0 | 1 | 0 |   | -1 |
+      | 1 | 3 | 2 |   | 0 | 0 | 1 |   | -1 |
+      
+      | 1 |  4 |  4 |   |  1 | 0 | 0 |   |   |
+      | 0 | -2 |  0 |   | -1 | 1 | 0 |   | \leftarrow |
+      | 0 | -1 | -2 |   | -1 | 0 | 1 |   | \to |
+
+      | 1 |  4 |  4 |   |  1 | 0 | 0 |   |     |
+      | 0 | -1 | -2 |   | -1 | 0 | 1 |   | /-1 |
+      | 0 | -2 |  0 |   | -1 | 1 | 0 |   |     |
+      
+      | 1 |  4 | 4 |   |  1 | 0 |  0 |   | -4 |
+      | 0 |  1 | 2 |   |  1 | 0 | -1 |   |  \to |
+      | 0 | -2 | 0 |   | -1 | 1 |  0 |   |  2 |
+      
+      | 1 | 0 | 0 |   | -3 | 0 |  4 |   |    |
+      | 0 | 1 | 2 |   |  1 | 0 | -1 |   |    |
+      | 0 | 0 | 4 |   |  1 | 1 | -2 |   | /4 |
+
+      | 1 | 0 | 0 |   |  -3 |   0 |    4 |   |    |
+      | 0 | 1 | 2 |   |   1 |   0 |   -1 |   | -2 |
+      | 0 | 0 | 1 |   | 1/4 | 1/4 | -1/2 |   |  \to |
+      
+      | 1 | 0 | 0 |   | -3  | 0    |    4 |   |    |
+      | 0 | 1 | 0 |   | 1/2 | -1/2 |    0 |   | -2 |
+      | 0 | 0 | 1 |   | 1/4 | 1/4  | -1/2 |   |  \to | 
+      Övre raden är inte rätt men jag pallar inte fixat.
+
+    + 25
+      a) k_{1-4} är nollskilda
+	 | k_1 |  0 |  0 |  0 |
+	 |  0 | k_2 |  0 |  0 |
+	 |  0 |  0 | k_3 |  0 |
+	 |  0 |  0 |  0 | k_4 | 
+	 Sätter det lika med I_4
+	 | k_1 |  0 |  0 |  0 |   | 1 | 0 | 0 | 0 |   | /k_1 |
+	 |  0 | k_2 |  0 |  0 |   | 0 | 1 | 0 | 0 |   | /k_2 |
+	 |  0 |  0 | k_3 |  0 |   | 0 | 0 | 1 | 0 |   | /k_3 |
+	 |  0 |  0 |  0 | k_4 |   | 0 | 0 | 0 | 1 |   | /k_4 |
+	 
+	 | 1 | 0 | 0 | 0 |   | 1/k_1 |    0 |    0 |    0 |
+	 | 0 | 1 | 0 | 0 |   |    0 | 1/k_2 |    0 |    0 |
+	 | 0 | 0 | 1 | 0 |   |    0 |    0 | 1/k_3 |    0 |
+	 | 0 | 0 | 0 | 1 |   |    0 |    0 |    0 | 1/k_4 |
+	 Tror detta är rätt.
+
+      b) 
+	 | k | 1 | 0 | 0 |
+	 | 0 | 1 | 0 | 0 |
+	 | 0 | 0 | k | 1 |
+	 | 0 | 0 | 0 | 1 |
+	 Sätter lika med I_4
+	 | k | 1 | 0 | 0 |   | 1 | 0 | 0 | 0 |   | /k |
+	 | 0 | 1 | 0 | 0 |   | 0 | 1 | 0 | 0 |   |    |
+	 | 0 | 0 | k | 1 |   | 0 | 0 | 1 | 0 |   |    |
+	 | 0 | 0 | 0 | 1 |   | 0 | 0 | 0 | 1 |   |    | 
+	 
+	 | 1 | 1/k | 0 | 0 |   | 1/k | 0 | 0 | 0 |   | -1/k |
+	 | 0 |   1 | 0 | 0 |   |   0 | 1 | 0 | 0 |   | \to    |
+	 | 0 |   0 | k | 1 |   |   0 | 0 | 1 | 0 |   |      |
+	 | 0 |   0 | 0 | 1 |   |   0 | 0 | 0 | 1 |   |      |
+	 
+	 | 1 | 0 | 0 | 0 |   | 1/k | -1/k | 0 | 0 |   |    |
+	 | 0 | 1 | 0 | 0 |   |   0 |    1 | 0 | 0 |   |    |
+	 | 0 | 0 | k | 1 |   |   0 |    0 | 1 | 0 |   | /k |
+	 | 0 | 0 | 0 | 1 |   |   0 |    0 | 0 | 1 |   |    |
+
+	 | 1 | 0 | 0 |   0 |   | 1/k | -1/k |   0 | 0 |   |      |
+	 | 0 | 1 | 0 |   0 |   |   0 |    1 |   0 | 0 |   |      |
+	 | 0 | 0 | 1 | 1/k |   |   0 |    0 | 1/k | 0 |   | -1/k |
+	 | 0 | 0 | 0 |   1 |   |   0 |    0 |   0 | 1 |   | \to    |
+	 
+	 | 1 | 0 | 0 | 0 |   | 1/k | -1/k |   0 |    0 |   |      |
+	 | 0 | 1 | 0 | 0 |   |   0 |    1 |   0 |    0 |   |      |
+	 | 0 | 0 | 1 | 0 |   |   0 |    0 | 1/k | -1/k |   | -1/k |
+	 | 0 | 0 | 0 | 1 |   |   0 |    0 |   0 |    1 |   | \to    |
+
+** Avsnitt 1.6
+*** Koncept
+    + Lösa flera linjära system samtidigt
+      Om man har flera matriser med samma koeficientmatris så kan
+      man skapa en augmenterad matris och lösa alla ekvationer
+      samtidigt. Till exempel:
+      | 1 | 2 | 3 |   | 4 |  1 |
+      | 2 | 5 | 3 |   | 5 |  6 |
+      | 1 | 0 | 8 |   | 9 | -6 |
+      PALLA RÄKNA UT
+    + Utökat ekvivalenpåstående om matriser
+      a) A är inverterbar
+      b) Ax = 0 har bara den triviala lösningen (dvs. alla
+	 variabler = 0)
+      c) Den reducerade row echelon formen är: I_n
+	 (dvs. identitetsmatrisen) 
+      d) A är en produkt av elementära matriser(*VIKTIGT*)
+      e) Ax = b är konsekvent("consistent") för varje nx1 matris b.
+	 Detta betyder att det att det finns minst en icke-trivial
+	 lösning.
+      f) Ax = b har bara en enda lösning.
+	 e följer av f
+    + Den inverterbara matrisen har bara en lösning
+      Om en kvadratis matris är inverterbar så för varje nx1
+      matris b så finns det en ekvation Ax=b så finns det exakt en
+      lösning x = A^-1*b
+      Exempel: Vi har matrisen:
+      | A |   |   |   |  b |
+      |---+---+---+---+----|
+      | 1 | 2 | 3 |   |  5 |
+      | 2 | 5 | 3 |   |  3 |
+      | 1 | 0 | 8 |   | 17 |
+      "b" är här "lösningsmatrisen". Vi inverterar A
+      | -40 | 16 |  9 |
+      |  13 | -5 | -3 |
+      |   5 | -2 | -1 |
+      och sätter in den i ekvationen x = A^-1*b, så vi
+      multiplicerar A^-1 med b och får:
+      | 5*-40 + 3*16 + 17*9 |
+      | 5*13 + 3*-5 + 17*-3 |
+      | 5*5 + 3*-2 + 17*-1  |
+      Som är:
+      |  1 |
+      | -1 |
+      |  2 |
+      EASY FUCKING PEASY
+*** Övningar
+    + 1
+      | 3 | 5 |   | -2 |
+      | 1 | 2 |   |  3 |
+      Vi inverterar matrisen
+      |  2 | -5 |
+      | -1 |  3 |
+      Multiplicerar med lösningarna:
+      | 2*-2 + -5*3 |
+      | -1*-2 + 3*3 |
+      Whatev
+      | -19 |
+      |  11 |
+    + 3
+      |  1 | 0 | -1 |   |  6 |
+      |  1 | 1 |  1 |   | -3 |
+      | -1 | 1 |  0 |   | 12 | 
+      Inverterar A
+      |  1 | 0 | -1 |   | 1 | 0 | 0 |   |  \to |
+      |  1 | 1 |  1 |   | 0 | 1 | 0 |   | -1 |
+      | -1 | 1 |  0 |   | 0 | 0 | 1 |   |  1 |
+
+      | 1 | 0 | -1 |   |  1 | 0 | 0 |   |  \to |
+      | 0 | 1 |  2 |   | -1 | 1 | 0 |   | -1 |
+      | 0 | 1 | -1 |   |  1 | 0 | 1 |   |  1 |
+     
+      | 1 | 0 | -1 |   |  1 | 0 | 0 |   |    |
+      | 0 | 1 |  2 |   | -1 | 1 | 0 |   |  \to |
+      | 0 | 1 | -1 |   |  1 | 0 | 1 |   | -1 |
+      
+      | 1 | 0 | -1 |   |  1 |  0 | 0 |   |     |
+      | 0 | 1 |  2 |   | -1 |  1 | 0 |   |     |
+      | 0 | 0 | -3 |   |  2 | -1 | 1 |   | /-3 |
+      
+      | 1 | 0 | -1 |   |    1 |   0 | 0 |   |  1 |
+      | 0 | 1 |  2 |   |   -1 |   1 | 0 |   | -2 |
+      | 0 | 0 |  1 |   | 2/-3 | 1/3 | 1 |   |  \to |
+      
+      | 1 | 0 | 0 |   | 1    | 0   | 0 |   |  1 |
+      | 0 | 1 | 0 |   | -1/3 | 1/3 | 0 |   | -2 |
+      | 0 | 0 | 1 |   | 2/-3 | 1/3 | 1 |   |  \to |
+    + 9
+      | 1 | -5 |   | 1 | -2 |   |  \to |
+      | 3 |  2 |   | 4 |  5 |   | -3 |
+
+      | 1 | -5 |   | 1 | -2 |   |     |
+      | 0 | 17 |   | 1 | 11 |   | /17 |
+      
+      | 1 | -5 |   |    1 |    -2 |   | 5 |
+      | 0 |  1 |   | 1/17 | 11/17 |   | \to |
+      
+      | 1 | 0 |   | (22/17) | -12/17 |   | 5 |
+      | 0 | 1 |   | 1/17    | 11/17  |   | \to |
+     
+** Avsnitt 1.7
+*** Koncept
+    + Diagonalmatriser
+      Det är en matris där alla tal förutom talen längst med
+      diagonalen från övre högra till nedre vänstra hörnet. Till
+      exempel:
+      | a | 0 | 0 |
+      | 0 | b | 0 |
+      | 0 | 0 | c |
+      a,b,c behöver inte vara nollskilda: Så I teorin så kan en
+      nollmatris vara en diagonalmatris.
+    + Diagonalmatris och potenser
+      En diagonalmatris som upphöjs i något tal är lätt att räkna
+      på:
+      A=
+      | 1 |  0 | 0 |
+      | 0 | -3 | 0 |
+      | 0 |  0 | 2 |
+      Så är A^5 =
+      | 1 |    0 |  0 |
+      | 0 | -243 |  0 |
+      | 0 |    0 | 32 | 
+      Och A^-5 =
+      | 1 |    0 |  0 |
+      | 0 | 1/-243 |  0 |
+      | 0 |    0 | 1/32 | 
+      Så basically tar man varje element i matrisen och upphöjer
+      dem med samma tal som man upphöjer matrisen.
+    + Diagonalmatris och multiplikation
+      Multiplikation med diagonalmatriser är ganska enkel så länge
+      man kommer ihåg vilken ordning multiplikationen sker i.
+    + 
+      
+      
+      
+** Avsnit 2.1
+*** Koncept
+    + Minors
+      En minor är determinanten av matrisen som man får om man tar
+      bort den rad och kollumn som en skalar är på. Detta visas
+      M_xy.
+      Om A =
+      | 3 | 1 | -4 |
+      | 2 | 5 |  6 |
+      | 1 | 4 | 8  |
+      Så är M_{1,1} =
+      | 5 |  6 |
+      | 4 |  8 |
+      och determinanten är: 16
+    + Cofactor
+      Cofaktor är samma som en minor fast man multiplicerar
+      determinanten med (-1)^{i+j}. Allt det här leder upp till hur
+      man räknar inverser på större matriser.
+    + Determinanter av triangulärmatriser (och diagonaler)
+      Determinanten av en triangulärmatris är produkten av alla
+      talen längst med diagonalen.
+    + Determinanter av 3x3 matriser är jobbigt att förklara så jag
+      säger bara: dra diagonaler från varje tal på den övre raden
+      och  gör som i en 2x2 matris och utöka matrisen efter
+      behov. (DU KAN KOMMA IHÅG DET HÄR SOM GREJEN SOM VAR DÅLIGT
+      FÖRKLARAD MEN GANSKA ENKEL)
+*** Övningar
+    + 9
+      A =
+      | a-3 |   5 |
+      |  -3 | a-2 | 
+      Det(A) = (a-3)*(a-2) + 15 =
+      a^2-2a-3a+6 + 15
+      a^2-5a+21
+    + 13
+      A =
+      | 3 |  0 |  0 |
+      | 2 | -1 |  5 |
+      | 1 |  9 | -4 |
+      Vi gör om a för enkelhetens skull
+      | 3 |  0 |  0 | 3 |  0 |
+      | 2 | -1 |  5 | 2 | -1 |
+      | 1 |  9 | -4 | 1 |  9 | 
+      Determinant:
+      [12 + 0 + 0] - [0 + 135 + 0]
+      12 - 135
+      -123
+    + 15
+      A =
+      | x+4 |   0 |
+      |   4 | x+2 |
+      Det(A) = (x+4)*(x+2) - 0 =
+      För att Det(A) inte ska vara noll så måste x vara skillt
+      från -4 och -2.
+    + 25
+      This will take a while, A =
+      |  2 |  2 | 1 | 0 |
+      | -1 |  0 | 3 | 0 |
+      |  4 |  9 | 3 | 1 |
+      |  0 | -1 | 5 | 7 | 
+      Första matrisen är:
+      + 2*M_11 = 2* Det
+	|  0 | 3 | 0 |  0 | 3 |
+	|  9 | 3 | 1 |  9 | 3 |
+	| -1 | 5 | 7 | -1 | 5 |
+	[0 + -3 + 0] - [0 + 0 + 189]
+	2*-192
+	-384
+      + 2*M_12 = 2* Det
+	| -1 | 3 | 0 | -1 | 3 |
+	|  4 | 3 | 1 |  4 | 3 |
+	|  0 | 5 | 7 |  0 | 5 | 
+	[-1*3*7 + 0 + 0] - [0 + -5 + 3*4*7]
+	-21 - 79
+	-100
+	-200
+
+      + 1*M_13 =  2*Det
+	| -1 |  0 | 0 | -1 |  0 |
+	|  4 |  9 | 1 |  4 |  9 |
+	|  0 | -1 | 7 |  0 | -1 | 
+	[-1*9*7 + 0 + 0] - [0 + 1 + 0]
+	-63 - 1
+	-64
+      + 0*M_14 = 0*Det
+	0
+      Svar:  -384 - (-200) + (-64)
+      Svar: -248
+      
+      
+	
+
+	
+	
+	
+      
+      
+      
+      
+      
+      
+      
+      
+      
+** Avsnitt 2.2
+*** Koncept
+    + Detrminanter och matriser med 0-rader
+      Om en kvadratisk matris A har en rad eller kolumn som är 0 så är
+      Det(A) = 0
+    + Determinanter och transponerade matriser
+      En kvadratisk matris A har samma samma determinant som A^T
+    + Determinanter och radoperationer
+      + En rad i A multiplicerad med en skalar k ger determinanten k*det(A)
+      + Om man byter plats på två rader i A så får man -det(A)
+      + Om man multiplicerar en radi A och adderar den till en annan
+	så är förändras inte determinanten.
+    + Determinanter och elementärmatriser
+      Dessa följer från förra påståendet så vi tar några exempel:
+      det(A) =
+      | 1 | 0 | 0 | 0 |
+      | 0 | 3 | 0 | 0 |
+      | 0 | 0 | 1 | 0 |
+      | 0 | 0 | 0 | 1 |
+      Det. är 3 (Värt att komma ihåg är att det(I_{n,m}) = 1)
+      | 0 | 0 | 0 | 1 |
+      | 0 | 1 | 0 | 0 |
+      | 0 | 0 | 1 | 0 |
+      | 1 | 0 | 0 | 0 | 
+      det(A) = -1
+      | 1 | 0 | 0 | 7 |
+      | 0 | 1 | 0 | 0 |
+      | 0 | 0 | 1 | 0 |
+      | 0 | 0 | 0 | 1 | 
+      det (A) = 1
+    + Räkna med radoperationer och triangulärmatriser
+      Genom att göra radoperationer på en matris och reducera den
+      till en vanlig triangulärmatris kan vi reducera matrisen ner
+      till ett mer lätthanterligt tillstånd. Exempel: A =
+      | 0 |  1 | 5 |
+      | 3 | -6 | 9 |
+      | 2 |  6 | 1 |
+      Byter plats på rad 1 och 2, får ett minus:
+      -det(
+      | 3 | -6 | 9 |
+      | 0 |  1 | 5 |
+      | 2 |  6 | 1 |	 
+      )
+      Drar ut 3:an ur första raden och får: -3*det(
+      | 1 | -2 | 3 |
+      | 0 |  1 | 5 |
+      | 2 |  6 | 1 |
+      )
+      Tar rad 1 gånger -2 och adderar det till nedre raden och får
+      -3*det(
+      | 1 | -2 |  3 |
+      | 0 |  1 |  5 |
+      | 0 | 10 | -5 |
+      )
+      OSV.
+*** Övningar
+    + 21
+      A =
+      | a | b | c |
+      | d | e | f |
+      | g | h | i | 
+      Det(A) = -6
+      B = 
+      | d | e | f |
+      | g | h | i | 
+      | a | b | c |
+      Två radbyten = -1*-1*-6 = -6
+    + 23
+      | -a | -b | -c |
+      | 2d | 2e | 2f |
+      | 5g | 5h | 5i | 
+      3 multiplikationer = -6*-1*2*5 = 60
+      
+** Avsnitt 2.3
+*** Koncept
+    + Determinanter mellan två lika matriser:
+      Om man har två matrser som bara skiljer sig i en rad eller
+      kolumn och man kan få den ena raden genom att addera från
+      den ena till den andra så kan man skriva:
+      det(C) = det(A) + det(B).
+      Förtydling: Du kan dela upp en matris i två och lösa
+      determinanten i delar om det bara är en rad eller kollumn
+      som skiljer dom åt.
+    + Determinanter och produkter av determinanter
+      Basically: det(A*B) = det(A) * det(B)
+    + Cramers regel för att lösa ekvationssystem
+      Man tar determinanten av en matris där man har bytit ut den
+      kolumn som man försöker lösa mot lösningen (b) i ekvationen
+      Ax = b.
+      
